@@ -1,0 +1,88 @@
+600.120 Intermediate Programming (Fall 2015)
+Homework #11
+Critter Park Game
+Last Modified: November 29, 2015
+
+Names of Contributors:
+Steven Chen | schen107 | schen107@jhu.edu | (302)438-0262
+Inez Lam | ilam1 | ilam1@jhu.edu | (805)338-5461
+Code scaffolding from: Ben Mitchell
+
+***************************************************************
+Program Description:
+
+This program is a command-line game called Critter Park that involves the management of a virtual park filled with critters that can be created, generated, and bred. This is the second implementation of the game, and so currently the only features implement are the ability to create, breed, display, and modify critters. In this update, ratings of cuteness, scariness, and strangeness based on the critter features have been added. Users are also able to sort the critters by name alphabetically.
+
+***************************************************************
+Directory Set-up:
+
+- bin: contains executables for the program (for hw8 and unitTest)
+
+- include: contains header files (.hpp)
+
+- src: contains source code files (.cpp)
+
+***************************************************************
+Source Files (in src directory):
+
+- hw8.cpp: Contains the main driver function to run the program.
+
+- unitTest.cpp: Contains the driver function to run the unit tests.
+
+- Barn.cpp: Contains the Barn class with all necessary functions Barn objects.
+
+- BarnUI.cpp: Contains the BarnUI class with functions used for the interactive main menu for Barn.
+
+- Critter.cpp: Contains the Critter class with all necessary functions for Critter objects.
+
+- Encoding.cpp: Contains the Encoding class with all necessary functions for Encoding objects.
+
+- Covering.cpp: Contains the Covering class with all necessary functions for Covering objects. 
+
+- Eyes.cpp: Contains the Eyes class with all necessary functions for Eyes objects.
+
+- Limbs.cpp: Contains the Limbs class with all necessary functions for Limbs objects.
+
+- Feature.cpp: Contains the Feature base class with subclasses Covering, Eyes, and Limbs.
+
+- Trait.cpp: Contains the Trait class with all necessary functions for Trait objects.
+
+- Makefile: Compiles the program with the appopriate flags. Modified from the Makefile for HW6.
+
+***************************************************************
+Header Files (in include directory):
+
+- Barn.hpp: Contains headers, function prototypes, class definitions, and defines for Barn.cpp.
+
+- BarnUI.hpp: Contains headers, function prototypes, class definitions, and defines for BarnUI.cpp.
+
+- Critter.hpp: Contains headers, function prototypes, class definitions, and defines for Critter.cpp.
+
+- Encoding.hpp: Contains headers, function prototypes, class definitions, and defines for Encoding.cpp.
+
+- Covering.hpp: Contains headers, function prototypes, class definitions, and defines for Covering.cpp.
+
+- Eyes.hpp: Contains headers, function prototypes, class definitions, and defines for Eyes.cpp.
+
+- Limbs.hpp: Contains headers, function prototypes, class definitions, and defines for Limbs.cpp.
+
+- Feature.hpp: Contains headers, function prototypes, class definitions, and defines for Feature.cpp.
+
+- Trait.hpp: Contains headers, function prototypes, class definitions, and defines for Trait.cpp.
+
+***************************************************************
+Other Files:
+
+- hg.log: Mercurial log file containing list of commits.
+
+- README: Contains background information and description of the program. (This current file.)
+
+***************************************************************
+Thoughts:
+
+This assignment took us approximately 20 hours. We gained additional experience with C++ classes, and because of our familiarity with classes and objects from last week's assignment, things were much smoother this time around. Since our program from the last assignment already incorporated many of the necessary features (such as a menu for performing actions on critters), we could focus more on the design aspects on this assignment. One of the changes we made was implementing Barn and BarUI classes to replace the C style menu we had from the previous version of the program. We also incorporated the Trait class for calculating characteristic scores for the critters.
+
+In the pursuit to decrease repetition of code, we used inheritance and polymorphism by using a Feature base class for each of the Covering, Eyes, and Limbs subclasses. While this was helpful for modularity purposes, this did not end up reducing the amount of code we had.
+
+The application can currently freely modify any currently implemented features of a critter, but for the future, this option would only be available for the programmers for debugging purposes. The mutation rate used was 0.05 and the crossover rate used was 0.1, and these values were qualitatively optimized to most accurately reflect nature. The code assumes that two critters with the same name are considered equal for simplicity purposes, but this may be modified later on. In the future, we can implement addtional features in the game, such as the ability to place critters in the zoo area, including a time function, and implementing a money management system.
+
