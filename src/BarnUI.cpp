@@ -33,13 +33,15 @@ void BarnUI :: printMenu() {
   printCritterList();
   printf("--------------------------------------------------------------------------\n");
   printf("\nMain Menu:\n");
-  printf("\tc <name> - create a randomized critter called <name> and add to end of critter list\n");
+  printf("\tc <name> - Buy a randomized critter called <name> and add to end of critter list\n");
   printf("\tm <index> - modify the critter at <index>\n");
   printf("\tb <index1> <index2> <name> - breed the critters at <index1> and <index2>, with the offspring named <name>\n");
   printf("\td <index> - display the description for the critter at <index>\n");
-  printf("\tr <index> - remove the critter at <index>\n");
+  printf("\tr <index> - sell the critter at <index>\n");
   printf("\ts - sort the critters alphabetically by their names\n");
-  printf("\tq - quit\n");
+  printf("\tt <index> - transfer critter at <index> to park");
+  printf("\tp - switch to park menu\n");
+  printf("\tq - quit to decision phase menu\n");
 }
 
 // Function to print out a list of critters
@@ -469,7 +471,7 @@ void BarnUI :: barnUserInterface() {
     }
   }
   
-  // Remove Critter
+  // Sell Critters
   else if (input == "r") {
     std::string ind;
     std::cin >> ind;
@@ -490,7 +492,7 @@ void BarnUI :: barnUserInterface() {
         std::cerr << "Error: Index is too big!\n";
       }
       else {
-        std::cout << "Removing critter at index " << index << "...\n";
+        std::cout << "Selling critter at index " << index << "...\n";
         myBarn.removeCritter(index_us);
       }
     }

@@ -34,6 +34,9 @@ void Barn :: removeCritter(unsigned int critterNumber) {
   }
   critterList.swap(tempList);
   tempList.clear();
+  // TODO: Add money to total amount
+  // Money made based on Critter's characteristic scores
+  // Selling amount = $100*(cuteness+scariness+weirdness)
 }
 
 // Functions for sorting critters by name
