@@ -1,5 +1,10 @@
-changeset:   1:b8a74b464948
+changeset:   2:59002710a0b1
 tag:         tip
+user:        Inez Lam <ilam1@jhu.edu>
+date:        Tue Nov 24 00:58:13 2015 -0500
+summary:     Updated Game, GameUI, and CritterParkUI to have working user interfaces, and so that all the UIs are connected.
+
+changeset:   1:b8a74b464948
 user:        Inez Lam <ilam1@jhu.edu>
 date:        Mon Nov 23 13:03:41 2015 -0500
 summary:     Added initial versions of Game, GameUI, and CritterParkUI classes with basic functionality

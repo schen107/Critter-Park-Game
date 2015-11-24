@@ -11,12 +11,12 @@ Code scaffolding from: Ben Mitchell
 ***************************************************************
 Program Description:
 
-This program is a command-line game called Critter Park that involves the management of a virtual park filled with critters that can be created, generated, and bred. This is the second implementation of the game, and so currently the only features implement are the ability to create, breed, display, and modify critters. In this update, ratings of cuteness, scariness, and strangeness based on the critter features have been added. Users are also able to sort the critters by name alphabetically.
+This program is a command-line game called Critter Park that involves the management of a virtual park filled with critters that can be created, generated, and bred. This is the third and final implementation of the game. While we did not have time to implement all the possible features, the game is playable in its existing state. In this update, the Park feature has been added to allow the user to display critters, and the Game components such as money, reputation, and visitors have been included as well. 
 
 ***************************************************************
 Directory Set-up:
 
-- bin: contains executables for the program (for hw8 and unitTest)
+- bin: contains executables for the program (for hw11 and unitTest)
 
 - include: contains header files (.hpp)
 
@@ -25,7 +25,7 @@ Directory Set-up:
 ***************************************************************
 Source Files (in src directory):
 
-- hw8.cpp: Contains the main driver function to run the program.
+- hw11.cpp: Contains the main driver function to run the program.
 
 - unitTest.cpp: Contains the driver function to run the unit tests.
 
