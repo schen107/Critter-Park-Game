@@ -16,18 +16,21 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <ctype>
+#include <cctype>
 #include <vector>
 #include <cstdio>
-#include "../include/Game.hpp"
+#include "../include/GameUI.hpp"
 
 class CritterParkUI {
 
   public:
+    void mainMenu();
+    void critterParkUserInterface();
 
   private:
-    //std::vector<Game>;
+    GameUI myGameUI;
+    //std::vector<Game> myGames;
 
-}
+};
 
 #endif

@@ -22,16 +22,20 @@
 #include <cstdio>
 #include "../include/Critter.hpp"
 #include "../include/Barn.hpp"
+#include "../include/Game.hpp"
 
 class BarnUI {
 
   public:
-
-    // Print list of critters
-    void printCritterList();
+    
+    // Getter
+    Barn& getBarn();
 
     // Checks if a string is a positive integer
     bool checkIfStringIsInt(std::string str);
+   
+    // Print list of critters
+    void printCritterList();
 
     // Prints the main menu
     void printMenu();

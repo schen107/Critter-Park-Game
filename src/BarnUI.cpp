@@ -13,6 +13,12 @@
 
 #include "../include/BarnUI.hpp"
 
+
+Barn& BarnUI :: getBarn() {
+  Barn& br = this->myBarn;
+  return br;
+}
+
 bool BarnUI :: checkIfStringIsInt(std::string str) {
 
   for (unsigned int i=0; i<str.length(); i++) {
@@ -23,33 +29,12 @@ bool BarnUI :: checkIfStringIsInt(std::string str) {
   return true;
 }
 
-
-/* Function to print the main menu for the user
- * Prints the menu into stdout to show program options
-*/
-void BarnUI :: printMenu() {
-
-  // Print statements
-  printCritterList();
-  printf("--------------------------------------------------------------------------\n");
-  printf("\nMain Menu:\n");
-  printf("\tc <name> - Buy a randomized critter called <name> and add to end of critter list\n");
-  printf("\tm <index> - modify the critter at <index>\n");
-  printf("\tb <index1> <index2> <name> - breed the critters at <index1> and <index2>, with the offspring named <name>\n");
-  printf("\td <index> - display the description for the critter at <index>\n");
-  printf("\tr <index> - sell the critter at <index>\n");
-  printf("\ts - sort the critters alphabetically by their names\n");
-  printf("\tt <index> - transfer critter at <index> to park");
-  printf("\tp - switch to park menu\n");
-  printf("\tq - quit to decision phase menu\n");
-}
-
 // Function to print out a list of critters
 
 void BarnUI :: printCritterList() {
 
   printf("--------------------------------------------------------------------------\n");
-  printf("\tYour Critters:\n");
+  printf("\tYour Barn:\n");
 
   // For empty list
   if (!myBarn.getCritterList().size()) {
@@ -65,6 +50,26 @@ void BarnUI :: printCritterList() {
       << myBarn.getCritterList()[i].getTrait().toString()
       << std::endl;
   }
+}
+
+/* Function to print the main menu for the user
+ * Prints the menu into stdout to show program options
+*/
+void BarnUI :: printMenu() {
+
+  // Print statements
+  printCritterList();
+  printf("--------------------------------------------------------------------------\n");
+  printf("\nBarn Main Menu:\n");
+  printf("\tc <name> - Buy a randomized critter called <name> and add to end of critter list\n");
+  printf("\tm <index> - modify the critter at <index>\n");
+  printf("\tb <index1> <index2> <name> - breed the critters at <index1> and <index2>, with the offspring named <name>\n");
+  printf("\td <index> - display the description for the critter at <index>\n");
+  printf("\tr <index> - sell the critter at <index>\n");
+  printf("\ts - sort the critters alphabetically by their names\n");
+  printf("\tt <index> - transfer critter at <index> to park");
+  printf("\tp - switch to park menu\n");
+  printf("\tq - quit to decision phase menu\n");
 }
 
 // Menu for modifying covering
@@ -382,7 +387,7 @@ void BarnUI :: barnUserInterface() {
 
   // Check for valid user input and runs the proper function
 
-  // Create Critter
+  // Buy Critter
   if (input == "c") {
     srand(time(NULL));
     std::string name;

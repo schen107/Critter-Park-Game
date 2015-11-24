@@ -26,6 +26,16 @@
 class Barn {
   public:
 
+    // Constructor
+    inline Barn() {
+      Critter temp1("Critter1");
+      Critter temp2("Critter2");
+      Critter temp3("Critter3");
+      critterList.push_back(temp1);
+      critterList.push_back(temp2);
+      critterList.push_back(temp3);
+    }
+
     // Getters and Setters
     std::vector<Critter> getCritterList();
     void setCritterList(std::vector<Critter> list);

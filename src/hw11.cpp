@@ -11,16 +11,27 @@
 ****************************************/
 
 
-#include "../include/BarnUI.hpp"
+#include "../include/CritterParkUI.hpp"
 
 
 int main() {
 
+  // Save terminal contents and cursor position
+  std::cout << "\x1b" << "7"; // save cursor position
+  std::cout << "\x1b[?47h"; // save screen contents
+  std::cout << "\x1b[2J"; // clear screen
+
   printf("\nWelcome to Critter Park!\n");
   printf("NOTE: This game is still a work in progress.\n");
 
-  BarnUI myBarn;
-  myBarn.barnUserInterface();
+  CritterParkUI myCritterPark;
+  myCritterPark.critterParkUserInterface();
 
+  // Restore things to the way they were
+  std::cout << "\x1b[0m"; // Restore to default text mode
+  std::cout << "\x1b[?47l"; // Restore screen contents
+  std::cout << "\x1b" << "8"; // Restore cursor position
+
+  std::cout << "Goodbye! Thank you for playing Critter Park!\n";
   return 0;
 }

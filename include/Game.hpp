@@ -1,13 +1,13 @@
 /**************************************
- * 600.120 Intermediate Programming (Fall 2015)
- * Homework #11
- * Game.hpp
- * Last Modified: November 29, 2015
+ * 600.120 intermediate programming (fall 2015)
+ * homework #11
+ * game.hpp
+ * last modified: november 29, 2015
  *
- ***** Names of Contributors:
- * Steven Chen | schen107 | schen107@jhu.edu | (302)438-0262
- * Inez Lam | ilam1 | ilam1@jhu.edu | (805)338-5461
- * Code scaffolding from: Ben Mitchell
+ ***** names of contributors:
+ * steven chen | schen107 | schen107@jhu.edu | (302)438-0262
+ * inez lam | ilam1 | ilam1@jhu.edu | (805)338-5461
+ * code scaffolding from: ben mitchell
 ****************************************/
 
 #ifndef _SCHEN107ILAM1_GAME_H
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <ctype>
+#include <cctype>
 #include <vector>
 #include <cstdio>
 #include "../include/Barn.hpp"
@@ -26,19 +26,25 @@ class Game {
   public:
 
     // Constructor
-    Game(std::string un = "", std::string pn= "", long m = 10000, int r = 0, int v = 0, int p = 10);  
+    Game(std::string un = "", std::string pn= "", int m = 10000, int r = 100, int c = 33, int s = 33, int w = 34, int v = 0, int p = 10);  
 
     // Getters and Setters
-    std::string getUsername() const;
+    std::string getUserName() const;
     std::string getParkName() const;
-    long getMoney() const;
+    int getMoney() const;
     int getReputation() const;
+    int getCutenessReputation() const;
+    int getScarinessReputation() const;
+    int getWeirdnessReputation() const;
     int getVisitors() const;
     int getPrice() const;
-    void setUsername(std::string un);
-    void setParkname(std::string pn);
-    void setMoney(long m);
+    void setUserName(std::string un);
+    void setParkName(std::string pn);
+    void setMoney(int m);
     void setReputation(int r);
+    void setCutenessReputation(int c);
+    void setScarinessReputation(int s);
+    void setWeirdnessReputation(int w);
     void setVisitors(int v);
     void setPrice(int p);
 
@@ -46,13 +52,16 @@ class Game {
     static void unitTest();
 
   private:
-    std::string username;
-    std::string parkname;
-    long money;
+    std::string userName;
+    std::string parkName;
+    int money;
     int reputation;
+    int cutenessReputation;
+    int scarinessReputation;
+    int weirdnessReputation;
     int visitors;
     int price;
 
-}
+};
 
 #endif
