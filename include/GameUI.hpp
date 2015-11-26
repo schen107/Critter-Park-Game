@@ -21,6 +21,7 @@
 #include <cstdio>
 #include "../include/Game.hpp"
 #include "../include/BarnUI.hpp"
+#include "../include/ParkUI.hpp"
 
 class GameUI {
 
@@ -38,7 +39,7 @@ class GameUI {
   private:
     Game myGame;
     BarnUI myBarnUI;
-    //ParkUI myParkUI;
+    ParkUI myParkUI;
 
 };
 

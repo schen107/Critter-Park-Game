@@ -92,7 +92,7 @@ void GameUI :: gameUserInterface() {
   else if (input == "p") {
     std::cout << "Going to Park Menu\n";
     //TODO
-    // myParkUI.parkUserInterface();
+    myParkUI.parkUserInterface();
   }
 
   // Set Admission Price

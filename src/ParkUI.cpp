@@ -150,7 +150,7 @@ void ParkUI :: parkUserInterface() {
     myPark.sortDisplays();
   }
   
-  else if (input == "t") {
+  //else if (input == "t") {
     
   
   // Quit option
