@@ -15,8 +15,7 @@
 
 
 Barn& BarnUI :: getBarn() {
-  Barn& br = this->myBarn;
-  return br;
+  return myBarn;
 }
 
 bool BarnUI :: checkIfStringIsInt(std::string str) {

@@ -1,8 +1,8 @@
 /**************************************
  * 600.120 Intermediate Programming (Fall 2015)
- * Homework #9
+ * Homework #11
  * Critter.hpp
- * Last Modified: November 9, 2015
+ * Last Modified: November 29, 2015
  *
  ***** Names of Contributors:
  * Steven Chen | schen107 | schen107@jhu.edu | (302)438-0262
@@ -10,8 +10,8 @@
  * Code scaffolding from: Ben Mitchell
 ****************************************/
 
-#ifndef _SCHEN107_ILAM1_CRITTER_HPP
-#define _SCHEN107_ILAM1_CRITTER_HPP
+#ifndef _SCHEN107ILAM1_CRITTER_HPP
+#define _SCHEN107ILAM1_CRITTER_HPP
 
 #include <iostream>
 #include <vector>

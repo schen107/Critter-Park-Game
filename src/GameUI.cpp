@@ -23,13 +23,11 @@ bool GameUI :: checkIfStringIsInt(std::string str) {
 }
 
 Game& GameUI :: getGame() {
-  Game& gr = this->myGame;
-  return gr;
+  return myGame;
 }
 
 BarnUI& GameUI:: getBarnUI() {
-  BarnUI& br = this->myBarnUI;
-  return br;
+  return myBarnUI;
 }
 
 void GameUI :: printDecisionPhaseMenu() {
