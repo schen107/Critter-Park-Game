@@ -35,7 +35,7 @@ void ParkUI :: printDisplayList() {
 
   // For empty list
   if (!myPark.getDisplayList().size()) {
-    printf("You don't have any critters right now!\n");
+    printf("You don't have any displays right now!\n");
     return;
   }
 
@@ -85,67 +85,18 @@ void ParkUI :: parkUserInterface() {
     std::cout << "Creating display called " << name << "...\n";
     Display temp(name);
     std::vector<Display> tempList;
-    tempList = myBarn.getDisplayList();
+    tempList = myPark.getDisplayList();
     tempList.push_back(temp);
-    myBarn.setDisplayList(tempList);
+    myPark.setDisplayList(tempList);
   }
 
-  // Modify critter
-  else if (input == "m") {
-    std::string ind;
-    std::cin >> ind;
-    if (!checkIfStringIsInt(ind)) {
-      std::cerr << "Error: Index must be an integer!\n";
-      barnUserInterface();
-      return;
-    }
-
-    int index = stoi(ind);
-    // Check for valid index
-    if (index < 0){
-      std::cerr << "Error: Index is less than zero!\n";
-    }
-    else {
-      unsigned int index_us = (unsigned int) index;
-      if (index_us >= (myBarn.getCritterList().size())) {
-        std::cerr << "Error: Index is too big!\n";
-      }
-      else {
-        std::cout << "Modifying critter at index " << index << "...\n";
-        modifyCritterMenu(index);
-      }
-    }
-  }
-
-  // Breed critters
-  else if (input == "b") {
-    std::string c1;
-    std::string c2;
-    std::string name;
-    std::cin >> c1 >> c2 >> name;
-
-    if (!checkIfStringIsInt(c1) || !checkIfStringIsInt(c2)) {
-      std::cerr << "Error: Indices must be integers!\n";
-      barnUserInterface();
-      return;
-    }
-
-    int p1 = stoi(c1);
-    int p2 = stoi(c2);
-    std::cout << "Breeding critters \"" << myBarn.getCritterList()[p1].getName() << "\" and \"" << myBarn.getCritterList()[p2].getName() << "\" to produce \"" << name << "\"...\n";
-
-    std::vector<Critter> tempList = myBarn.getCritterList();
-    tempList.push_back(myBarn.getCritterList()[p1].breedCritter(myBarn.getCritterList()[p2], name));
-    myBarn.setCritterList(tempList);
-  }
-
-  // Display critter
+  // Display description
   else if (input == "d") {
     std::string ind;
     std::cin >> ind;
     if (!checkIfStringIsInt(ind)) {
       std::cerr << "Error: Index must be an integer!\n";
-      barnUserInterface();
+      parkUserInterface();
       return;
     }
 
@@ -156,23 +107,23 @@ void ParkUI :: parkUserInterface() {
     }
     else {
       unsigned int index_us = (unsigned int) index;
-      if (index_us >= (myBarn.getCritterList().size())) {
+      if (index_us >= (myPark.getDisplayList().size())) {
         std::cerr << "Error: Index is too big!\n";
       }
       else {
-        std::cout << "Displaying critter at index " << index << "...\n";
-        std::cout << myBarn.getCritterList()[index];
+        std::cout << "Displaying display at index " << index << "...\n";
+        std::cout << myPark.getDisplayList()[index];
       }
     }
   }
   
-  // Sell Critters
+  // Sell Displays
   else if (input == "r") {
     std::string ind;
     std::cin >> ind;
     if (!checkIfStringIsInt(ind)) {
       std::cerr << "Error: Index must be an integer!\n";
-      barnUserInterface();
+      parkUserInterface();
       return;
     }
 
@@ -183,21 +134,25 @@ void ParkUI :: parkUserInterface() {
     }
     else {
       unsigned int index_us = (unsigned int) index;
-      if (index_us >= (myBarn.getCritterList().size())) {
+      if (index_us >= (myPark.getDisplayList().size())) {
         std::cerr << "Error: Index is too big!\n";
       }
       else {
-        std::cout << "Selling critter at index " << index << "...\n";
-        myBarn.removeCritter(index_us);
+        std::cout << "Selling display at index " << index << "...\n";
+        myPark.removeDisplay(index_us);
       }
     }
   }
   
   // Sort Critter
   else if (input == "s") {
-    std::cout << "Sorting your critters...\n";
-    myBarn.sortCritters();
+    std::cout << "Sorting your displays...\n";
+    myPark.sortDisplays();
   }
+  
+  else if (input == "t") {
+    
+  
   // Quit option
   else if (input == "q") {
     std::cout << std::endl << "Goodbye!\n";
@@ -210,7 +165,7 @@ void ParkUI :: parkUserInterface() {
     std::cerr << "Error: Invalid user input!\n";
   } 
 
-  // Recursively calls the barn user interface
-  barnUserInterface();
+  // Recursively calls the park user interface
+  parkUserInterface();
 
 }
