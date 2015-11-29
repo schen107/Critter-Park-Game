@@ -48,6 +48,8 @@ class Game {
     void setVisitors(int v);
     void setPrice(int p);
 
+    static std::string menuChoice = "none";
+
     // Unit Testing
     static void unitTest();
 

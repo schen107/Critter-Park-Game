@@ -30,6 +30,10 @@ BarnUI& GameUI:: getBarnUI() {
   return myBarnUI;
 }
 
+ParkUI& GameUI:: getParkUI() {
+  return myParkUI;
+}
+
 void GameUI :: printDecisionPhaseMenu() {
 
   
@@ -85,13 +89,13 @@ void GameUI :: gameUserInterface() {
 
   // Barn Menu
   else if (input == "b") {
+    std::cout << "Going to Barn Menu...\n";
     myBarnUI.barnUserInterface();
   }
   
   // Park Menu
   else if (input == "p") {
-    std::cout << "Going to Park Menu\n";
-    //TODO
+    std::cout << "Going to Park Menu...\n";
     myParkUI.parkUserInterface();
   }
 

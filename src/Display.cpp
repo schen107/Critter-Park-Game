@@ -13,7 +13,7 @@
 #include "../include/Display.hpp"
 
 // Constructor
-Display :: Display (std::string n) : name(n)
+Display :: Display (std::string n, int max) : name(n), maxNumCritters(max)
 {
 }
 
@@ -22,35 +22,55 @@ std::string Display :: getName() const {
   return name;
 }
 
-Critter Display :: getCritter() const {
-  return critter;
+int Display :: getMaxNumCritters() const {
+  return maxNumCritters;
+}
+
+std::vector<Critter> Display :: getCritterList() const {
+  return critterList;
 }
 
 void Display::setName(std::string name) {
   this->name = name;
 }
 
-void Display::setCritter(Critter c) {
-  this->critter = c;
+void Display :: setMaxNumCritters(int n) {
+  this->maxNumCritters = n;
+}
+
+void Display::setCritterList(std::vector<Critter> list) {
+  this->critterList.swap(list);
 }
 
 // String that contains description of Display
 std::string Display :: toString() const {
   std::string str;
 
-  str += "Display: \"" + name
-      + "\" has Critter \"" + critter.getName() 
-      + "\" in it. \nIt is covered in " + critter.getCovering().toString()
-      + ". It has " + critter.getEyes().toString()
-      + " and " + critter.getLimbs().toString()
-      + ".\n" + critter.getTrait().toString() + "\n";
+  str += "Display: \"" + name + " can hold a maximum of "
+      + std::to_string(maxNumCritters) + " critter(s).\n"
+      + "There are currently " + std::to_string(critterList.size()) 
+      + " critter(s) inside.\n";
+  if (critterList.size() > 0) {
+    str += "Critters inside:\n\n";
+    for (unsigned int i=0; i<critterList.size(); i++) {
+      str += "Critter " + std::to_string(i) + " is named \""
+          + critterList[i].getName() + "\".\n";
+          + "It is covered in " + critterList[i].getCovering().toString()
+          + ". It has " + critterList[i].getEyes().toString()
+          + " and " + critterList[i].getLimbs().toString()
+          + ".\n" + critterList[i].getTrait().toString() + "\n\n";
+    }
+  }
   return str;
 }
 
 // Operators
 void Display :: operator= (const Display &other) {
   name = other.name;
-  critter = other.critter;
+  maxNumCritters = other.maxNumCritters;
+  std::vector<Critter> temp;
+  temp = other.critterList;
+  critterList.swap(temp);
 }
 
 bool Display :: operator== (const Display &other) {

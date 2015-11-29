@@ -31,15 +31,23 @@ class GameUI {
     // Getters and Setters
     Game& getGame();
     BarnUI& getBarnUI();
+    ParkUI& getParkUI();
 
     void printDecisionPhaseMenu();
     void effectPhaseDisplay();
     void gameUserInterface();
+    
+    //static std::string menuChoice = "none";
 
   private:
     Game myGame;
     BarnUI myBarnUI;
+    //static BarnUI& myBarnUIr;
+    //myBarnUIr = myBarnUI;
     ParkUI myParkUI;
+    //static ParkUI& myParkUIr;
+    //= myParkUI;
+
 
 };
 

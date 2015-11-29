@@ -1,5 +1,10 @@
-changeset:   2:59002710a0b1
+changeset:   3:483fa306b8c6
 tag:         tip
+user:        Inez Lam <ilam1@jhu.edu>
+date:        Tue Nov 24 01:03:15 2015 -0500
+summary:     Updated hg.log and README file
+
+changeset:   2:59002710a0b1
 user:        Inez Lam <ilam1@jhu.edu>
 date:        Tue Nov 24 00:58:13 2015 -0500
 summary:     Updated Game, GameUI, and CritterParkUI to have working user interfaces, and so that all the UIs are connected.

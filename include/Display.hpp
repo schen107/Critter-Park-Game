@@ -26,13 +26,15 @@ class Display {
   public:
 
     // Constructors
-    Display(std::string n = "");
+    Display(std::string n = "", int max = 1);
     
     // Getters and Setters
     std::string getName() const;
-    Critter getCritter() const;
+    int getMaxNumCritters() const;
+    std::vector<Critter> getCritterList() const;
     void setName(std::string name);
-    void setCritter(Critter c);
+    void setMaxNumCritters(int n);
+    void setCritterList(std::vector<Critter> list);
 
     // Description of Display
     std::string toString() const;
@@ -49,7 +51,8 @@ class Display {
   private:
     // Member variables
     std::string name;
-    Critter critter;
+    int maxNumCritters;
+    std::vector<Critter> critterList;
 };
 
 std::ostream & operator<< (std::ostream & os, const Display & c); 

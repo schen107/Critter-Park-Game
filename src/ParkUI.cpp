@@ -150,8 +150,19 @@ void ParkUI :: parkUserInterface() {
     myPark.sortDisplays();
   }
   
-  //else if (input == "t") {
+  //TODO
+  else if (input == "t") {
+    std::cout << "Transferring critters...\n";
+  }
+  
+  else if (input == "b") {
+    std::cout << "Going to barn menu...\n";
+    //menuChoice = "barn";
+    return;
+    //CritterParkUI::getGameUI().getBarnUI.barnUserInterface();
+   //TODO
     
+  }
   
   // Quit option
   else if (input == "q") {

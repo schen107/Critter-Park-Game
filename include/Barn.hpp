@@ -28,6 +28,7 @@ class Barn {
 
     // Constructor
     inline Barn() {
+      srand(time(NULL));
       Critter temp1("Critter1");
       Critter temp2("Critter2");
       Critter temp3("Critter3");
