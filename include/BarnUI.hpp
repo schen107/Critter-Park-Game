@@ -27,7 +27,9 @@
 class BarnUI {
 
   public:
-    
+   
+    //BarnUI (Game& gr);
+
     // Getter
     Barn& getBarn();
 
@@ -51,6 +53,7 @@ class BarnUI {
 
   private: 
     Barn myBarn;
+    //Game& myGamer;
 };
 
 #endif

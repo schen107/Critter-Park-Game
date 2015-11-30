@@ -40,7 +40,10 @@ class Barn {
     // Getters and Setters
     std::vector<Critter> getCritterList();
     void setCritterList(std::vector<Critter> list);
-    
+   
+    // Add Critter to vector
+    void addCritter(Critter c);
+
     // Remove critter from vector
     void removeCritter(unsigned int critterNumber);
     

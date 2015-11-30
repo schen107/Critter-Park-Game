@@ -27,6 +27,8 @@
 class ParkUI {
 
   public:
+   
+    //ParkUI (Game& gr);
     
     // Getter
     Park& getPark();
@@ -45,6 +47,8 @@ class ParkUI {
 
   private: 
     Park myPark;
+    //G
+    //ame& myGamer;
 };
 
 #endif

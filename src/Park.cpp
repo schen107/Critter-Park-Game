@@ -21,6 +21,24 @@ void Park :: setDisplayList(std::vector<Display> list) {
   this->displayList.swap(list);
 }
 
+bool Park :: addCritterToDisplay(unsigned int displayNumber) {
+  std::cout << "Transferring critter to display " << displayNumber << std::endl;
+  std::vector<Display> tempList;
+  tempList = getDisplayList();
+  if (tempList[displayNumber].addCritter(Game::getTempCritter())) {
+    setDisplayList(tempList);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+// Remove Critter from a display
+void Park :: removeCritterFromDisplay(unsigned int displayNumber, unsigned int critterNumber) {
+  displayList[displayNumber].removeCritter(critterNumber);
+}
+
 /* Function to remove a display from the display vector
  * Takes in index of display to remove, and modifies vector accordingly
  */

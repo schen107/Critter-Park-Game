@@ -22,7 +22,7 @@ std::string Display :: getName() const {
   return name;
 }
 
-int Display :: getMaxNumCritters() const {
+unsigned int Display :: getMaxNumCritters() const {
   return maxNumCritters;
 }
 
@@ -30,16 +30,67 @@ std::vector<Critter> Display :: getCritterList() const {
   return critterList;
 }
 
+int Display :: getCuteness() const {
+  return totalCuteness;
+}
+
+int Display :: getScariness() const {
+  return totalScariness;
+}
+
+int Display :: getWeirdness() const {
+  return totalWeirdness;
+}
+
 void Display::setName(std::string name) {
   this->name = name;
 }
 
-void Display :: setMaxNumCritters(int n) {
+void Display :: setMaxNumCritters(unsigned int n) {
   this->maxNumCritters = n;
 }
 
 void Display::setCritterList(std::vector<Critter> list) {
   this->critterList.swap(list);
+}
+
+void Display :: setCuteness(int c) {
+  this->totalCuteness = c;
+}
+
+void Display :: setScariness(int s) {
+  this->totalScariness = s;
+}
+
+void Display :: setWeirdness(int w) {
+  this->totalWeirdness = w;
+}
+
+// Add Critter to a display
+bool Display :: addCritter(Critter c) {
+  if (critterList.size() < maxNumCritters) {
+    critterList.push_back(c);
+    totalCuteness += c.getTrait().getCuteness();
+    totalWeirdness += c.getTrait().getWeirdness();
+    totalScariness += c.getTrait().getScariness();
+    return true;
+  }
+  else {
+    std::cerr << "Error: Your display can't hold any more critters!\n";
+    return false;
+  }
+}
+
+// Remove Critter from a display
+void Display :: removeCritter(unsigned int critterNumber) {
+  std::vector<Critter> tempList;
+  for (unsigned int i=0; i < critterList.size(); i++) {
+    if (i != critterNumber) {
+      tempList.push_back(critterList[i]);
+    }
+  }
+  critterList.swap(tempList);
+  tempList.clear();
 }
 
 // String that contains description of Display

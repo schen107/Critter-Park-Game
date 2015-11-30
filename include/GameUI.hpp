@@ -19,6 +19,7 @@
 #include <cctype>
 #include <vector>
 #include <cstdio>
+#include <ctime>
 #include "../include/Game.hpp"
 #include "../include/BarnUI.hpp"
 #include "../include/ParkUI.hpp"
@@ -26,6 +27,7 @@
 class GameUI {
 
   public:
+
     bool checkIfStringIsInt(std::string str);
 
     // Getters and Setters
@@ -37,17 +39,10 @@ class GameUI {
     void effectPhaseDisplay();
     void gameUserInterface();
     
-    //static std::string menuChoice = "none";
-
   private:
     Game myGame;
     BarnUI myBarnUI;
-    //static BarnUI& myBarnUIr;
-    //myBarnUIr = myBarnUI;
     ParkUI myParkUI;
-    //static ParkUI& myParkUIr;
-    //= myParkUI;
-
 
 };
 

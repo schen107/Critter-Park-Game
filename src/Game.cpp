@@ -12,9 +12,15 @@
 
 #include "../include/Game.hpp"
 
+// Static Variable Initializers
+std::string Game::menuChoice = "none";
+int Game::money = 10000;
+Critter Game::tempCritter;
+int Game::index = 0;
+
 // Constructor
-Game :: Game(std::string un, std::string pn, int m, int r, int c, int s, int w, int v, int p) 
-  : userName(un), parkName(pn), money(m), reputation(r), cutenessReputation(c), scarinessReputation(s), weirdnessReputation(w), visitors(v), price(p)
+Game :: Game(std::string un, std::string pn, /*int m,*/ double r, double c, double s, double w, int v, int p) 
+  : userName(un), parkName(pn), /*money(m),*/ reputation(r), cutenessReputation(c), scarinessReputation(s), weirdnessReputation(w), visitors(v), price(p)
 {
 }
 
@@ -27,23 +33,23 @@ std::string Game :: getParkName() const {
   return parkName;
 }
 
-int Game :: getMoney() const {
+int Game :: getMoney() {
   return money;
 }
 
-int Game :: getReputation() const {
+double Game :: getReputation() const {
   return reputation;
 }
 
-int Game :: getCutenessReputation() const {
+double Game :: getCutenessReputation() const {
   return cutenessReputation;
 }
 
-int Game :: getScarinessReputation() const {
+double Game :: getScarinessReputation() const {
   return scarinessReputation;
 }
 
-int Game :: getWeirdnessReputation() const {
+double Game :: getWeirdnessReputation() const {
   return weirdnessReputation;
 }
 
@@ -55,6 +61,14 @@ int Game :: getPrice() const {
   return price;
 }
 
+std::string Game :: getMenuChoice() {
+  return menuChoice;
+}
+
+Critter Game :: getTempCritter() {
+  return tempCritter;
+}
+
 void Game :: setUserName(std::string un) {
   this->userName = un;
 }
@@ -64,22 +78,22 @@ void Game :: setParkName(std::string pn) {
 }
 
 void Game :: setMoney(int m) {
-  this->money = m;
+  money = m;
 }
 
-void Game :: setReputation(int r) {
+void Game :: setReputation(double r) {
   this->reputation = r;
 }
 
-void Game :: setCutenessReputation(int c) {
+void Game :: setCutenessReputation(double c) {
   this->cutenessReputation = c;
 }
 
-void Game :: setScarinessReputation(int s) {
+void Game :: setScarinessReputation(double s) {
   this->scarinessReputation = s;
 }
 
-void Game :: setWeirdnessReputation(int w) {
+void Game :: setWeirdnessReputation(double w) {
   this->weirdnessReputation = w;
 }
 
@@ -89,6 +103,14 @@ void Game :: setVisitors(int v) {
 
 void Game :: setPrice(int p) {
   this->price = p;
+}
+
+void Game :: setMenuChoice(std::string s) {
+  menuChoice = s;
+}
+    
+void Game :: setTempCritter(Critter c) {
+  tempCritter = c;
 }
 
 // Unit Testing

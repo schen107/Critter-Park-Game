@@ -32,6 +32,10 @@ void Barn :: setCritterList(std::vector<Critter> list) {
   this->critterList.swap(list);
 }
 
+void Barn :: addCritter(Critter c) {
+  critterList.push_back(c);
+}
+
 /* Function to remove a critter from the critter vector
  * Takes in index of critter to remove, and modifies vector accordingly
  */

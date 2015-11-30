@@ -18,6 +18,8 @@
 #include <vector>
 #include <algorithm>
 #include "../include/Display.hpp"
+#include "../include/Critter.hpp"
+#include "../include/Game.hpp"
 
 class Park {
   public:
@@ -35,7 +37,13 @@ class Park {
     // Getters and Setters
     std::vector<Display> getDisplayList();
     void setDisplayList(std::vector<Display> list);
-    
+   
+    // Add Critter to a display
+    bool addCritterToDisplay(unsigned int displayNumber);
+
+    // Remove critter from a display
+    void removeCritterFromDisplay(unsigned int displayNumber, unsigned int critterNumber);
+
     // Remove displays from vector
     void removeDisplay(unsigned int displayNumber);
     

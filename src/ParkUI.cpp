@@ -12,6 +12,10 @@
 
 #include "../include/ParkUI.hpp"
 
+/*ParkUI :: ParkUI (Game& gr) : myGamer(gr)
+{
+}*/
+
 Park& ParkUI :: getPark() {
   return myPark;
 }
@@ -57,9 +61,9 @@ void ParkUI :: printMenu() {
   printDisplayList();
   printf("--------------------------------------------------------------------------\n");
   printf("\nPark Main Menu:\n");
-  printf("\tc <name> - Buy a display called <name> and add to end of display list\n");
+  printf("\tbuy <name> - Buy a display called <name> for $150 and add to end of display list\n");
   printf("\td <index> - display the description for the display at <index>\n");
-  printf("\tr <index> - sell the display at <index>\n");
+  printf("\tsell <index> - sell the display at <index> for $100\n");
   printf("\ts - sort the displays alphabetically by their names\n");
   printf("\tt <index> - transfer critter in display <index> to barn\n");
   printf("\tb - switch to barn menu\n");
@@ -78,16 +82,23 @@ void ParkUI :: parkUserInterface() {
   // Check for valid user input and runs the proper function
 
   // Buy Display
-  if (input == "c") {
+  if (input == "buy") {
     srand(time(NULL));
-    std::string name;
-    std::cin >> name;
-    std::cout << "Creating display called " << name << "...\n";
-    Display temp(name);
-    std::vector<Display> tempList;
-    tempList = myPark.getDisplayList();
-    tempList.push_back(temp);
-    myPark.setDisplayList(tempList);
+    if (Game::getMoney() < 150) {
+      std::cout << "Sorry, you don't have enough money to buy a display!\n";
+    }
+    else {
+      Game::setMoney(Game::getMoney()-150);
+      std::string name;
+      std::cin >> name;
+      std::cout << "Buying display called " << name << "...\n";
+      Display temp(name);
+      std::vector<Display> tempList;
+      tempList = myPark.getDisplayList();
+      tempList.push_back(temp);
+      myPark.setDisplayList(tempList);
+      std::cout << "You now have $" << Game::getMoney() << " left.\n";
+    }
   }
 
   // Display description
@@ -118,7 +129,7 @@ void ParkUI :: parkUserInterface() {
   }
   
   // Sell Displays
-  else if (input == "r") {
+  else if (input == "sell") {
     std::string ind;
     std::cin >> ind;
     if (!checkIfStringIsInt(ind)) {
@@ -140,6 +151,9 @@ void ParkUI :: parkUserInterface() {
       else {
         std::cout << "Selling display at index " << index << "...\n";
         myPark.removeDisplay(index_us);
+        Game::setMoney(Game::getMoney() + 100);
+        std::cout << "Your display sold for $100.\n";
+        std::cout << "You now have $" << Game::getMoney() << ".\n";
       }
     }
   }
@@ -150,18 +164,64 @@ void ParkUI :: parkUserInterface() {
     myPark.sortDisplays();
   }
   
-  //TODO
+  // Transfer critter to barn
   else if (input == "t") {
-    std::cout << "Transferring critters...\n";
+    std::string ind;
+    std::cin >> ind;
+    if (!checkIfStringIsInt(ind)) {
+      std::cerr << "Error: Index must be an integer!\n";
+      parkUserInterface();
+      return;
+    }
+
+    int index = stoi(ind); 
+    // Check for valid index
+    if (index < 0){
+      std::cerr << "Error: Index is less than zero!\n";
+    }
+    else {
+      unsigned int index_us = (unsigned int) index;
+      if (index_us >= (myPark.getDisplayList().size())) {
+        std::cerr << "Error: Index is too big!\n";
+      }
+      else {
+        std::cout << myPark.getDisplayList()[index];
+        std::cout << "Enter the index of the critter you want to move to the barn: ";         
+        std::string ind1;
+        std::cin >> ind1;
+        if (!checkIfStringIsInt(ind1)) {
+          std::cerr << "Error: Index must be an integer!\n";
+          parkUserInterface();
+          return;
+        }
+
+        int index1 = stoi(ind1); 
+        // Check for valid index
+        if (index1 < 0){
+          std::cerr << "Error: Index is less than zero!\n";
+        }
+        else {
+          unsigned int index1_us = (unsigned int) index1;
+          if (index1_us >= (myPark.getDisplayList().size())) {
+            std::cerr << "Error: Index is too big!\n";
+          }
+          else {
+            std::cout << "Transferring critter at index " << index1_us << "...\n";
+            Game::setMenuChoice("movetobarn");
+            Critter c = myPark.getDisplayList()[index_us].getCritterList()[index1_us];
+            Game::setTempCritter(c);
+            myPark.removeCritterFromDisplay(index_us, index1_us);
+            return;
+          }
+        }     
+      }
+    }
   }
-  
+
+  // Goto to barn menu
   else if (input == "b") {
-    std::cout << "Going to barn menu...\n";
-    //menuChoice = "barn";
+    Game::setMenuChoice("barn");
     return;
-    //CritterParkUI::getGameUI().getBarnUI.barnUserInterface();
-   //TODO
-    
   }
   
   // Quit option

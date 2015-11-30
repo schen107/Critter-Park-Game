@@ -30,11 +30,23 @@ class Display {
     
     // Getters and Setters
     std::string getName() const;
-    int getMaxNumCritters() const;
+    unsigned int getMaxNumCritters() const;
     std::vector<Critter> getCritterList() const;
+    int getCuteness() const;
+    int getScariness() const;
+    int getWeirdness() const;
     void setName(std::string name);
-    void setMaxNumCritters(int n);
+    void setMaxNumCritters(unsigned int n);
     void setCritterList(std::vector<Critter> list);
+    void setCuteness(int c);
+    void setScariness(int s);
+    void setWeirdness(int w);
+
+    // Add Critter to a display
+    bool addCritter(Critter c);
+
+    // Remove critter from a display
+    void removeCritter(unsigned int i);
 
     // Description of Display
     std::string toString() const;
@@ -51,8 +63,11 @@ class Display {
   private:
     // Member variables
     std::string name;
-    int maxNumCritters;
+    unsigned int maxNumCritters;
     std::vector<Critter> critterList;
+    int totalCuteness = 0;
+    int totalScariness = 0;
+    int totalWeirdness = 0;
 };
 
 std::ostream & operator<< (std::ostream & os, const Display & c); 

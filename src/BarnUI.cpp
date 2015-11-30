@@ -13,6 +13,9 @@
 
 #include "../include/BarnUI.hpp"
 
+/*BarnUI :: BarnUI (Game& gr) : myGamer(gr) 
+{
+}*/
 
 Barn& BarnUI :: getBarn() {
   return myBarn;
@@ -60,13 +63,13 @@ void BarnUI :: printMenu() {
   printCritterList();
   printf("--------------------------------------------------------------------------\n");
   printf("\nBarn Main Menu:\n");
-  printf("\tc <name> - Buy a randomized critter called <name> and add to end of critter list\n");
+  printf("\tbuy <name> - Buy a randomized critter called <name> for $100 and add to end of critter list\n");
   printf("\tm <index> - modify the critter at <index>\n");
   printf("\tb <index1> <index2> <name> - breed the critters at <index1> and <index2>, with the offspring named <name>\n");
   printf("\td <index> - display the description for the critter at <index>\n");
-  printf("\tr <index> - sell the critter at <index>\n");
+  printf("\tsell <index> - sell the critter at <index>\n");
   printf("\ts - sort the critters alphabetically by their names\n");
-  printf("\tt <index> - transfer critter at <index> to park");
+  printf("\tt <index> - transfer critter at <index> to park\n");
   printf("\tp - switch to park menu\n");
   printf("\tq - quit to decision phase menu\n");
 }
@@ -387,16 +390,23 @@ void BarnUI :: barnUserInterface() {
   // Check for valid user input and runs the proper function
 
   // Buy Critter
-  if (input == "c") {
+  if (input == "buy") {
     srand(time(NULL));
-    std::string name;
-    std::cin >> name;
-    std::cout << "Creating critter named " << name << "...\n";
-    Critter temp(name);
-    std::vector<Critter> tempList;
-    tempList = myBarn.getCritterList();
-    tempList.push_back(temp);
-    myBarn.setCritterList(tempList);
+    if (Game::getMoney() < 100) {
+      std::cout << "Sorry, you don't have enough money to buy a critter!\n";
+    }
+    else {
+      Game::setMoney(Game::getMoney()-100);
+      std::string name;
+      std::cin >> name;
+      std::cout << "Buying critter named " << name << "...\n";
+      Critter temp(name);
+      std::vector<Critter> tempList;
+      tempList = myBarn.getCritterList();
+      tempList.push_back(temp);
+      myBarn.setCritterList(tempList);
+      std::cout << "You now have $" << Game::getMoney() << " left.\n";
+    }
   }
 
   // Modify critter
@@ -476,7 +486,7 @@ void BarnUI :: barnUserInterface() {
   }
   
   // Sell Critters
-  else if (input == "r") {
+  else if (input == "sell") {
     std::string ind;
     std::cin >> ind;
     if (!checkIfStringIsInt(ind)) {
@@ -497,7 +507,14 @@ void BarnUI :: barnUserInterface() {
       }
       else {
         std::cout << "Selling critter at index " << index << "...\n";
+        int sellPrice = 5*(
+            abs(myBarn.getCritterList()[index_us].getTrait().getCuteness()) +
+            abs(myBarn.getCritterList()[index_us].getTrait().getScariness()) +
+            abs(myBarn.getCritterList()[index_us].getTrait().getWeirdness()));
         myBarn.removeCritter(index_us);
+        Game::setMoney(Game::getMoney() + sellPrice);
+        std::cout << "Your critter sold for $" << sellPrice << ".\n";
+        std::cout << "You now have $" << Game::getMoney() << ".\n";
       }
     }
   }
@@ -507,6 +524,43 @@ void BarnUI :: barnUserInterface() {
     std::cout << "Sorting your critters...\n";
     myBarn.sortCritters();
   }
+  
+  // Transfer critter to park
+  else if (input == "t") {
+    std::string ind;
+    std::cin >> ind;
+    if (!checkIfStringIsInt(ind)) {
+      std::cerr << "Error: Index must be an integer!\n";
+      barnUserInterface();
+      return;
+    }
+    int index = stoi(ind); 
+    // Check for valid index
+    if (index < 0){
+      std::cerr << "Error: Index is less than zero!\n";
+    }
+    else {
+      unsigned int index_us = (unsigned int) index;
+      if (index_us >= (myBarn.getCritterList().size())) {
+        std::cerr << "Error: Index is too big!\n";
+      }
+      else {
+        std::cout << "Transferring critter at index " << index_us << ".\n";
+        Game::setMenuChoice("movetopark");
+        Game::setTempCritter(myBarn.getCritterList()[index_us]);
+        Game::index = index_us;
+        //myBarn.removeCritter(index_us);
+        return;
+      }
+    }
+  }
+
+  // Go to park option
+  else if (input == "p") {
+    Game::setMenuChoice("park");
+    return;
+  }
+
   // Quit option
   else if (input == "q") {
     std::cout << std::endl << "Goodbye!\n";
