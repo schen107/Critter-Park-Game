@@ -1,5 +1,30 @@
-changeset:   3:483fa306b8c6
+changeset:   8:1b3f7dbb2369
 tag:         tip
+user:        Inez Lam <ilam1@jhu.edu>
+date:        Sun Nov 29 20:16:29 2015 -0500
+summary:     Updated Park, Barn, Game, and their UIs so that the user can move from the park to the barn menu directly, and vice versa.
+
+changeset:   7:3bf33f008fde
+user:        Inez Lam <ilam1@jhu.edu>
+date:        Sun Nov 29 12:14:10 2015 -0500
+summary:     Updated Display class to include a vector of critters so that multiple critters can be present
+
+changeset:   6:893981d61b91
+user:        Steven Chen <schen107@jhu.edu>
+date:        Thu Nov 26 12:43:05 2015 -0500
+summary:     Updated ParkUI
+
+changeset:   5:44f816a6d265
+user:        Steven Chen <schen107@jhu.edu>
+date:        Thu Nov 26 12:37:10 2015 -0500
+summary:     Updated ParkUI class
+
+changeset:   4:4eab629bd4c8
+user:        Steven Chen <schen107@jhu.edu>
+date:        Thu Nov 26 02:24:41 2015 -0500
+summary:     Added initial version of Park and Display classes, added framework for ParkUI class.
+
+changeset:   3:483fa306b8c6
 user:        Inez Lam <ilam1@jhu.edu>
 date:        Tue Nov 24 01:03:15 2015 -0500
 summary:     Updated hg.log and README file
