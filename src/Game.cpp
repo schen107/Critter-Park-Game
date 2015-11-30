@@ -117,9 +117,26 @@ void Game :: setTempCritter(Critter c) {
 void Game :: unitTest() {
 
   std::cout << "Starting unit tests for Game class...\n";
-
+  
   int passedTests = 0;
+  Game test;
 
-  std::cout << "Done with unit tests for Game class." << std::endl 
-            << "# tests passed: " << passedTests << "out of 6.";
+  test.setUserName("ben");
+  if (test.getUserName() == "ben") {
+    passedTests++;
+  }
+
+  test.setReputation(40.5);
+  if (test.getReputation() == 40.5) {
+    passedTests++;
+  }
+  
+  test.setPrice(5);
+  if (test.getPrice() == 5) {
+    passedTests++;
+  }
+
+
+  std::cout << "Done with unit tests for Game class." 
+            << "# tests passed: " << passedTests << " out of 3.\n";
 }

@@ -68,17 +68,20 @@ void Display :: setWeirdness(int w) {
 
 // Add Critter to a display
 bool Display :: addCritter(Critter c) {
-  if (critterList.size() < maxNumCritters) {
-    critterList.push_back(c);
-    totalCuteness += c.getTrait().getCuteness();
-    totalWeirdness += c.getTrait().getWeirdness();
-    totalScariness += c.getTrait().getScariness();
-    return true;
+  try {
+      if (critterList.size() >= maxNumCritters) {
+        throw std::exception();
+    }
   }
-  else {
+  catch (std::exception &e) {
     std::cerr << "Error: Your display can't hold any more critters!\n";
     return false;
   }
+  critterList.push_back(c);
+  totalCuteness += c.getTrait().getCuteness();
+  totalWeirdness += c.getTrait().getWeirdness();
+  totalScariness += c.getTrait().getScariness();
+  return true;
 }
 
 // Remove Critter from a display

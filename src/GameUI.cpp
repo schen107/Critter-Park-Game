@@ -52,8 +52,7 @@ void GameUI :: printDecisionPhaseMenu() {
 
 void GameUI :: effectPhaseDisplay() {
 
-  // TODO
-  std::cout << "Simulating effect phase...\n";
+  std::cout << "Starting effect phase...\n";
   srand(time(NULL));
   int numVisitors = (myGame.getReputation()-myGame.getPrice()*0.5)*(0.8+rand()%40/100);
   int expenses = myBarnUI.getBarn().getCritterList().size()*10 + myParkUI.getPark().getDisplayList().size()*20;
@@ -78,9 +77,9 @@ void GameUI :: effectPhaseDisplay() {
     double temp = rand()%100;
     if (temp >= 0 && temp < myGame.getCutenessReputation()) {
       if (totalCuteness <= 0) {
-        cutenessChange -= 0.5;
-        scarinessChange += 0.25;
-        weirdnessChange += 0.25;
+        cutenessChange -= 0.1;
+        scarinessChange += 0.05;
+        weirdnessChange += 0.05;
         /*double cutenessChange = myGame.getCutenessReputation() - 0.5;
         if (cutenessChange <= 0) {
           myGame.setCutenessReputation(0);
@@ -95,9 +94,9 @@ void GameUI :: effectPhaseDisplay() {
         turnReputation -= 0.5;
       }
       else if (totalCuteness > 0 && totalCuteness <= 10) {
-        cutenessChange += 0.5;
-        scarinessChange -= 0.25;
-        weirdnessChange -= 0.25;
+        cutenessChange += 0.1;
+        scarinessChange -= 0.05;
+        weirdnessChange -= 0.05;
         /*double cutenessChange = myGame.getCutenessReputation() + 0.5;
         if (cutenessChange >= 100) {
           myGame.setCutenessReputation(100);
@@ -112,9 +111,9 @@ void GameUI :: effectPhaseDisplay() {
         turnReputation += 0.5;
       }
       else if (totalCuteness > 10 && totalCuteness <= 20) {
-        cutenessChange += 1;
-        scarinessChange -= 0.5;
-        weirdnessChange -= 0.5;
+        cutenessChange += 0.2;
+        scarinessChange -= 0.1;
+        weirdnessChange -= 0.1;
         /*double cutenessChange = myGame.getCutenessReputation() + 1;
         if (cutenessChange >= 100) {
           myGame.setCutenessReputation(100);
@@ -129,9 +128,9 @@ void GameUI :: effectPhaseDisplay() {
         turnReputation += 1;
       }
       else {
-        cutenessChange += 1.5;
-        scarinessChange -= 0.75;
-        weirdnessChange -= 0.75;
+        cutenessChange += 0.3;
+        scarinessChange -= 0.15;
+        weirdnessChange -= 0.15;
         /*double cutenessChange = myGame.getCutenessReputation() + 1.5;
         if (cutenessChange >= 100) {
           myGame.setCutenessReputation(100);
@@ -148,36 +147,36 @@ void GameUI :: effectPhaseDisplay() {
     }
     else if (temp >= myGame.getCutenessReputation() && temp < myGame.getCutenessReputation()+myGame.getScarinessReputation()) {
       if (totalScariness <= 0) {
-        cutenessChange += 0.25;
-        scarinessChange -= 0.5;
-        weirdnessChange += 0.25;
+        cutenessChange += 0.05;
+        scarinessChange -= 0.1;
+        weirdnessChange += 0.05;
         /*myGame.setScarinessReputation(myGame.getScarinessReputation() - 2);
         myGame.setScarinessReputation(myGame.getScarinessReputation() + 1);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() + 1);*/
         turnReputation -= 0.5;
       }
       else if (totalScariness > 0 && totalScariness <= 10) {
-        cutenessChange -= 0.25;
-        scarinessChange += 0.5;
-        weirdnessChange -= 0.25;
+        cutenessChange -= 0.05;
+        scarinessChange += 0.1;
+        weirdnessChange -= 0.05;
         /*myGame.setScarinessReputation(myGame.getScarinessReputation() + 2);
         myGame.setScarinessReputation(myGame.getScarinessReputation() - 1);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 1);*/
         turnReputation += 0.5;
       }
       else if (totalScariness > 10 && totalScariness <= 20) {
-        cutenessChange -= 0.5;
-        scarinessChange += 1;
-        weirdnessChange -= 0.5;
+        cutenessChange -= 0.1;
+        scarinessChange += 0/2;
+        weirdnessChange -= 0.1;
         /*myGame.setScarinessReputation(myGame.getScarinessReputation() + 4);
         myGame.setScarinessReputation(myGame.getScarinessReputation() - 2);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 2);*/
         turnReputation += 1;
       }
       else {
-        cutenessChange -= 0.75;
-        scarinessChange += 1.5;
-        weirdnessChange -= 0.75;
+        cutenessChange -= 0.15;
+        scarinessChange += 0.3;
+        weirdnessChange -= 0.15;
         /*myGame.setScarinessReputation(myGame.getScarinessReputation() + 6);
         myGame.setScarinessReputation(myGame.getScarinessReputation() - 3);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 3);*/
@@ -186,36 +185,36 @@ void GameUI :: effectPhaseDisplay() {
     }
     else {
       if (totalWeirdness <= 0) {
-        cutenessChange += 0.25;
-        scarinessChange += 0.25;
-        weirdnessChange -= 0.5;
+        cutenessChange += 0.05;
+        scarinessChange += 0.05;
+        weirdnessChange -= 0.1;
         /*myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 2);
         myGame.setScarinessReputation(myGame.getScarinessReputation() + 1);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() + 1);*/
         turnReputation -= 0.5;
       }
       else if (totalWeirdness > 0 && totalWeirdness <= 10) {
-        cutenessChange -= 0.25;
-        scarinessChange -= 0.25;
-        weirdnessChange += 0.5;
+        cutenessChange -= 0.05;
+        scarinessChange -= 0.05;
+        weirdnessChange += 0.1;
         /*myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() + 2);
         myGame.setScarinessReputation(myGame.getScarinessReputation() - 1);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 1);*/
         turnReputation += 0.5;
       }
       else if (totalWeirdness > 10 && totalWeirdness <= 20) {
-        cutenessChange -= 0.5;
-        scarinessChange -= 0.5;
-        weirdnessChange += 1;
+        cutenessChange -= 0.1;
+        scarinessChange -= 0.1;
+        weirdnessChange += 0.2;
         /*myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() + 4);
         myGame.setScarinessReputation(myGame.getScarinessReputation() - 2);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 2);*/
         turnReputation += 1;
       }
       else {
-        cutenessChange -= 0.75;
-        scarinessChange -= 0.75;
-        weirdnessChange += 1.5;
+        cutenessChange -= 0.15;
+        scarinessChange -= 0.15;
+        weirdnessChange += 0.3;
         /*myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() + 6);
         myGame.setScarinessReputation(myGame.getScarinessReputation() - 3);
         myGame.setWeirdnessReputation(myGame.getWeirdnessReputation() - 3);*/
@@ -229,36 +228,41 @@ void GameUI :: effectPhaseDisplay() {
   double newWeirdnessRep = myGame.getWeirdnessReputation() + weirdnessChange;
 
   if (newCutenessRep <= 0) {
-    myGame.setScarinessReputation(myGame.getScarinessReputation()+myGame.getCutenessReputation()/2);
-    myGame.setWeirdnessReputation(myGame.getWeirdnessReputation()+myGame.getCutenessReputation()/2);
+    //if (myGame.getCutenessReputation() == 0) {
+      
+    myGame.setScarinessReputation(myGame.getScarinessReputation()-newCutenessRep/2);//+myGame.getCutenessReputation()/2);
+    myGame.setWeirdnessReputation(myGame.getWeirdnessReputation()-newCutenessRep/2);//+myGame.getCutenessReputation()/2);
     myGame.setCutenessReputation(0);
   }
-  else if (newScarinessRep <= 0) {
-    myGame.setCutenessReputation(myGame.getCutenessReputation()+myGame.getScarinessReputation()/2);
-    myGame.setWeirdnessReputation(myGame.getWeirdnessReputation()+myGame.getScarinessReputation()/2);
+  if (newScarinessRep <= 0) {
+    myGame.setCutenessReputation(myGame.getCutenessReputation()-newScarinessRep/2);//myGame.getScarinessReputation()/2);
+    myGame.setWeirdnessReputation(myGame.getWeirdnessReputation()-newScarinessRep/2);//+myGame.getScarinessReputation()/2);
     myGame.setScarinessReputation(0);
   }
-  else if (newWeirdnessRep <= 0) {
-    myGame.setCutenessReputation(myGame.getCutenessReputation()+myGame.getWeirdnessReputation()/2);
-    myGame.setScarinessReputation(myGame.getScarinessReputation()+myGame.getWeirdnessReputation()/2);
+  if (newWeirdnessRep <= 0) {
+    myGame.setCutenessReputation(myGame.getCutenessReputation()-newWeirdnessRep/2);//+myGame.getWeirdnessReputation()/2);
+    myGame.setScarinessReputation(myGame.getScarinessReputation()-newWeirdnessRep/2);//+myGame.getWeirdnessReputation()/2);
     myGame.setWeirdnessReputation(0);
   }
-  else if (newCutenessRep >= 100) {
-    myGame.setScarinessReputation(myGame.getScarinessReputation()-myGame.getCutenessReputation()/2);
-    myGame.setWeirdnessReputation(myGame.getWeirdnessReputation()-myGame.getCutenessReputation()/2);
+  if (newCutenessRep >= 100) {
+    myGame.setScarinessReputation(0);//myGame.getScarinessReputation()-myGame.getCutenessReputation()/2);
+    myGame.setWeirdnessReputation(0);//myGame.getWeirdnessReputation()-myGame.getCutenessReputation()/2);
     myGame.setCutenessReputation(100);
   }
-  else if (newScarinessRep >= 100) {
-    myGame.setCutenessReputation(myGame.getCutenessReputation()-myGame.getScarinessReputation()/2);
-    myGame.setWeirdnessReputation(myGame.getWeirdnessReputation()-myGame.getScarinessReputation()/2);
+  if (newScarinessRep >= 100) {
+    myGame.setCutenessReputation(0);//myGame.getCutenessReputation()-myGame.getScarinessReputation()/2);
+    myGame.setWeirdnessReputation(0);//myGame.getWeirdnessReputation()-myGame.getScarinessReputation()/2);
     myGame.setScarinessReputation(100);
   }
-  else if (newWeirdnessRep >= 100) {
-    myGame.setCutenessReputation(myGame.getCutenessReputation()-myGame.getWeirdnessReputation()/2);
-    myGame.setScarinessReputation(myGame.getScarinessReputation()-myGame.getWeirdnessReputation()/2);
+  if (newWeirdnessRep >= 100) {
+    myGame.setCutenessReputation(0);//myGame.getCutenessReputation()-myGame.getWeirdnessReputation()/2);
+    myGame.setScarinessReputation(0);//myGame.getScarinessReputation()-myGame.getWeirdnessReputation()/2);
     myGame.setWeirdnessReputation(100);
   }
-  else {
+  
+  if (newCutenessRep > 0 && newCutenessRep < 100 &&
+      newScarinessRep > 0 && newScarinessRep < 100 &&
+      newWeirdnessRep > 0 && newScarinessRep < 100) {
     myGame.setCutenessReputation(newCutenessRep);
     myGame.setScarinessReputation(newScarinessRep);
     myGame.setWeirdnessReputation(newWeirdnessRep);
@@ -391,6 +395,7 @@ void GameUI :: gameUserInterface() {
   else if (input == "q") {
     std::cout << std::endl << "Quitting to main menu!\n";
     printf("--------------------------------------------------------------------------\n");
+    //myGame("", "", 100, 33.3, 33.3, 33.4, 0, 10);  
     return;
   }
 

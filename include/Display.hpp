@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <vector>
+#include <exception>
 #include "Critter.hpp"
 
 // Display class - note, ALL DISPLAYS MUST HAVE A CRITTER AT THE MOMENT, i.e. no empty displays

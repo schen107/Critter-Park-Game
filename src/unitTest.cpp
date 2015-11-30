@@ -17,6 +17,9 @@
 #include "../include/Critter.hpp"
 #include "../include/Encoding.hpp"
 #include "../include/Barn.hpp"
+#include "../include/Display.hpp"
+#include "../include/Park.hpp"
+#include "../include/Game.hpp"
 
 int main() {
 
@@ -27,6 +30,9 @@ int main() {
   Encoding::unitTest();
   Critter::unitTest();
   Barn::unitTest();
+  Display::unitTest();
+  Park::unitTest();
+  Game::unitTest();
 
   return 0;
 }

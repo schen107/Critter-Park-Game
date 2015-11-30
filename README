@@ -11,7 +11,7 @@ Code scaffolding from: Ben Mitchell
 ***************************************************************
 Program Description:
 
-This program is a command-line game called Critter Park that involves the management of a virtual park filled with critters that can be created, generated, and bred. This is the third and final implementation of the game. While we did not have time to implement all the possible features, the game is playable in its existing state. In this update, the Park feature has been added to allow the user to display critters, and the Game components such as money, reputation, and visitors have been included as well. 
+This program is a command-line game called Critter Park that involves the management of a virtual park filled with critters that can be created, generated, and bred. This is the third and final implementation of the game. While we did not have time to implement all the possible features, the game is playable in its existing state. In this update, the Park feature has been added to allow the user to display critters, and the Game components such as money, reputation, and visitors have been included as well. Users can now move the critters between the displays in the Park and the Barn. Gameplay is split into the decision phase, in which the users can perform various functions to update their park (such as buying/selling critters, breeding critters, buying/selling displays, etc.), and the effect phase, where visitors come to the park and look at the critters. While not visible to the users, the visitors that visit the park during the effect phase for the various characteristics of the park help to set the park's reputation.
 
 ***************************************************************
 Directory Set-up:
@@ -29,11 +29,23 @@ Source Files (in src directory):
 
 - unitTest.cpp: Contains the driver function to run the unit tests.
 
+- CritterParkUI.cpp: Contains the CritterParkUI class with all necessary functions for CritterParkUI objects.
+
+- Game.cpp: Contains the Game class with all necessary functions Game objects.
+
+- GameUI.cpp: Contains the GameUI class with functions used for the interactive main menu for Game.
+
 - Barn.cpp: Contains the Barn class with all necessary functions Barn objects.
 
 - BarnUI.cpp: Contains the BarnUI class with functions used for the interactive main menu for Barn.
 
+- Park.cpp: Contains the Park class with all necessary functions Park objects.
+
+- ParkUI.cpp: Contains the ParkUI class with functions used for the interactive main menu for Park.
+
 - Critter.cpp: Contains the Critter class with all necessary functions for Critter objects.
+
+- Display.cpp: Contains the Display class with all necessary functions for Display objects.
 
 - Encoding.cpp: Contains the Encoding class with all necessary functions for Encoding objects.
 
@@ -52,11 +64,23 @@ Source Files (in src directory):
 ***************************************************************
 Header Files (in include directory):
 
+- CritterParkUI.hpp: Contains headers, function prototypes, class definitions, and defines for CritterParkUI.cpp.
+
+- Game.hpp: Contains headers, function prototypes, class definitions, and defines for Game.cpp.
+
+- GameUI.hpp: Contains headers, function prototypes, class definitions, and defines for GameUI.cpp.
+
 - Barn.hpp: Contains headers, function prototypes, class definitions, and defines for Barn.cpp.
 
 - BarnUI.hpp: Contains headers, function prototypes, class definitions, and defines for BarnUI.cpp.
 
+- Park.hpp: Contains headers, function prototypes, class definitions, and defines for Park.cpp.
+
+- ParkUI.hpp: Contains headers, function prototypes, class definitions, and defines for ParkUI.cpp.
+
 - Critter.hpp: Contains headers, function prototypes, class definitions, and defines for Critter.cpp.
+
+- Display.hpp: Contains headers, function prototypes, class definitions, and defines for Display.cpp.
 
 - Encoding.hpp: Contains headers, function prototypes, class definitions, and defines for Encoding.cpp.
 
@@ -80,9 +104,9 @@ Other Files:
 ***************************************************************
 Thoughts:
 
-This assignment took us approximately 20 hours. We gained additional experience with C++ classes, and because of our familiarity with classes and objects from last week's assignment, things were much smoother this time around. Since our program from the last assignment already incorporated many of the necessary features (such as a menu for performing actions on critters), we could focus more on the design aspects on this assignment. One of the changes we made was implementing Barn and BarUI classes to replace the C style menu we had from the previous version of the program. We also incorporated the Trait class for calculating characteristic scores for the critters.
+This assignment took us approximately 24 hours. For this update, we implemented addtional features in the game, such as the ability to place critters in the Park area, including the effect phase, and implementing a money and visitor system. We were able to get a glimpse of what it is like to develop a large-scale program, which was an interesting experience. Working on this project allowed us to see the importance of planning before writing any program, because there are many levels of classes and objects, and the UML diagram that we wrote in class was very useful as we were working on the assignment. Additionally, since some of the code was written several weeks ago, it was helpful to have documented code so that we could remember what we had written previously. It was also helpful learning how to implement the try and catch statements, but we wish we could have learned this eariler so we could implement it in more of our code.
 
-In the pursuit to decrease repetition of code, we used inheritance and polymorphism by using a Feature base class for each of the Covering, Eyes, and Limbs subclasses. While this was helpful for modularity purposes, this did not end up reducing the amount of code we had.
+The biggest struggle we had was implementing the movement between the Park and Barn classes. In particular, we had to find a way to get from the barn menu to the park menu and back, and that required a lot of planning in order to implement. Since we had several levels of code, and some classes "has-a" an instance of another class or classes, it was difficult to go between classes and required very precise code to implement. After we were able to figure that out, it also took some time to figure out how to move a critter from the park to the barn (and vice versa), but it helped us to understand C++ classes better. Another aspect that was difficult was the gameplay element. In particular, the effect phase had many different equations and formulas to implement, and we did our best to implement it in a way that would be realistic and fun to play at the same time. Although there is no way to lose the game currently, it is possible to go into debt (i.e. have a negative amount of money). 
 
-The application can currently freely modify any currently implemented features of a critter, but for the future, this option would only be available for the programmers for debugging purposes. The mutation rate used was 0.05 and the crossover rate used was 0.1, and these values were qualitatively optimized to most accurately reflect nature. The code assumes that two critters with the same name are considered equal for simplicity purposes, but this may be modified later on. In the future, we can implement addtional features in the game, such as the ability to place critters in the zoo area, including a time function, and implementing a money management system.
+We also added some extra features that went beyond the minimum requirements, but we did not have time to implement all the possible functions that could make this game even more fun. Perhaps in the future, we can continue to improve this game.
 

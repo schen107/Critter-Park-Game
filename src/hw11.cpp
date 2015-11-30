@@ -22,7 +22,6 @@ int main() {
   std::cout << "\x1b[2J"; // clear screen
 
   printf("\nWelcome to Critter Park!\n");
-  printf("NOTE: This game is still a work in progress.\n");
 
   CritterParkUI myCritterPark;
   myCritterPark.critterParkUserInterface();

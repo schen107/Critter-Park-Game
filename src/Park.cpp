@@ -94,5 +94,5 @@ void Park :: unitTest() {
     passedTests++;
   }
 
-  std::cout << "Done with unit tests for Park. # of tests passed: " << passedTests << " out of 3.\n";
+  std::cout << "Done with unit tests for Park. # of tests passed: " << passedTests << " out of 2.\n";
 }
